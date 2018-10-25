@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm bg-secondary navbar-light">
+  <a class="navbar-brand" routerLink="/">
+    <img [src]="logoUrl" style="width:40px" />
+  </a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/addEmployee">New Employee</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/listEmployees">Employees</a>
+    </li>
+  </ul>
+
+  <form class="form-inline">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="doChangeField('doj',srch)">
+            <fa name="calendar"></fa>
+          </button>
+          <button type="button" class="btn btn-primary" (click)="doChangeField('empName',srch)">
+            <fa name="user"></fa>
+          </button>
+
+        </div>
+      </div>
+      <input type="text" name="srchValue" class="form-control" [(ngModel)]="srchValue" required #srch placeholder="Date of Joining"
+      />
+      <div class="input-group-prepend">
+        <button class="btn btn-primary" (click)="doSearch()">
+          <fa name="search"></fa>
+        </button>
+      </div>
+    </div>
+  </form>
+</nav>
+
+
+<router-outlet></router-outlet>

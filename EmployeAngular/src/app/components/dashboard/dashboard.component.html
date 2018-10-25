@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <header class="container-fluid">
+    <h1>
+      <img [src]="logoUrl" class="img-fluid" style="width:6.5%" /> {{title}}
+    </h1>
+  </header>
+</div>
+<div class="container">
+
+  <div class="alert alert-info p-4" *ngIf="msg">
+    <fa name="info"></fa> {{msg}}
+  </div>
+
+  <div class="card-columns">
+    <div class="card" *ngFor="let d of ['Network','Testing','HR','Database']">
+      <div class="card-body text-center">
+        <h3 class="card-title">
+          {{d}}:
+          <span class="badge badge-info">
+            {{employees|deptCount:d}}/ {{employees.length}}
+          </span>
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-columns">
+    <div class="card">
+      <div class="card-body text-center">
+        <h3 class="card-title">
+          <span>Joined Today: </span>{{(employees|joinedToday).length}}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

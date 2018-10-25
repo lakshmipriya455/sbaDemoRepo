@@ -1,0 +1,142 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-sm-9 m-auto">
+      <h3 class="mb-5 mt-5">
+
+        <fa name="{{isEditing?'edit':'user-plus'}}"></fa>
+        {{isEditing?"Edit":"New"}} Employee
+
+      </h3>
+
+      <form class="form" #f="ngForm" novalidate (ngSubmit)="f.valid && save()">
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="user"></fa>
+              </span>
+            </div>
+            <input type="text" class="form-control" id="enm" name="enm" required minlength="5" maxlength="15" [(ngModel)]="employee.empName"
+              #enm=ngModel placeholder="Enter Name" />
+          </div>
+          <div class="alert alert-danger" *ngIf="(enm.errors && (enm.touched || enm.darty))||(enm.errors && (enm.touched || enm.darty))">
+            <p *ngIf="(enm.errors && (enm.touched || enm.darty))">Please see that Name
+              <strong>
+                <span *ngIf="enm.errors.required">is not left blank</span>
+                <span *ngIf="enm.errors.minlength">is atleast 5 chars in length</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="money">
+                </fa>
+              </span>
+            </div>
+            <input type="number" class="form-control" id="basic" name="basic" [(ngModel)]="employee.basic" #basic=ngModel placeholder="Enter Basic"
+            />
+          </div>
+          <div class="alert alert-danger" *ngIf="basic.errors && (basic.touched || basic.darty)">
+            <p>Please see that Basic
+              <strong>
+                <span *ngIf="basic.errors.required">is not left blank</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="money">
+
+                </fa>
+              </span>
+            </div>
+            <input type="number" class="form-control" id="hra" name="hra" [(ngModel)]="employee.hra" #hra=ngModel placeholder="Enter HRA"
+            />
+          </div>
+          <div class="alert alert-danger" *ngIf="hra.errors && (hra.touched || hra.darty)">
+            <p>Please see that HRA
+              <strong>
+                <span *ngIf="hra.errors.required">is not left blank</span>
+              </strong>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="user">
+                  <span>Department</span>
+                </fa>
+              </span>
+              <span> </span>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="dept" value="Network" required [(ngModel)]="employee.dept" #dept=ngModel
+                />Network
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="dept" value="Database" required [(ngModel)]="employee.dept" #dept=ngModel
+                />Database
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="dept" value="Testing" required [(ngModel)]="employee.dept" #dept=ngModel
+                />Testing
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="dept" value="HR" required [(ngModel)]="employee.dept" #dept=ngModel /> HR
+              </label>
+            </div>
+          </div>
+          <div class="alert alert-danger" *ngIf="dept.invalid">
+            <p>Please see that dept
+              <strong>is selected</strong>
+            </p>
+          </div>
+        </div>
+
+
+
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <fa name="calendar"></fa>
+              </span>
+            </div>
+            <input type="date" class="form-control" id="dateofjoin" name="dateofjoin" required [(ngModel)]="employee.dateOfJoining" #dateofjoin=ngModel
+              placeholder="Enter Date of Joining" />
+          </div>
+          <div class="alert alert-danger" *ngIf="dateofjoin.errors.required && (dateofjoin.touched || dateofjoin.darty )">
+            <p>Please see that date of date of Joining
+              <strong>is not left blank</strong>
+            </p>
+          </div>
+        </div>
+        <div>
+
+
+          <button class="btn btn-block btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
